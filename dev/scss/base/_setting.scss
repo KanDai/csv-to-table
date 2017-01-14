@@ -1,0 +1,83 @@
+/*--------------------------------------
+  Common-Setting
+---------------------------------------*/
+
+html {
+    // font-size: 62.5%;
+    font-size: 10px;
+}
+body, input, button, select, textarea {
+    font-family: $font-gothic;
+}
+body {
+    min-width: 320px;
+
+    background: #fff;
+    color: $color-txt;
+
+    font-size: 1.4rem;
+    line-height:1.7;
+
+    // デバイスの向きによって文字サイズが変更されないようにする
+    -webkit-text-size-adjust: 100%;
+
+    // 出来るだけ禁則処理を保持する(英数字の単語の途中では折り返さない)
+    // word-wrapの新しい仕様がoverflow-wrap
+    word-wrap : break-word;
+    overflow-wrap : break-word;
+
+    // フォントのレンダリングを調整してキレイにみせる
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // 自動カーニングを有効に
+    // 参考) https://ics.media/entry/14087
+    font-feature-settings: "palt";
+
+}
+h1 , h2 , h3 , h4 , h5 , h6 {
+    line-height : 1.4;  // 見出し系はパラついて見えるので行間を少し狭める
+}
+img {
+    vertical-align: top;  // imgで意図しないマージンがつかないように設定
+    max-width: 100%;
+    height: auto;
+}
+
+//
+// フォーム要素のデフォルトスタイルを削除する場合使用
+//
+// input, button, textarea, select {
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     appearance: none;
+//     background: none;
+//     border: none;
+//     border-radius: 0;
+//     outline: none;
+// }
+
+strong { font-weight: bold; }
+em { font-style: italic;}
+a {
+    text-decoration: none;
+    color: $color-link;
+    transition: opacity .3s;
+}
+
+// 画面サイズが大きい(PC想定)の時のみホバーを適用
+// iOS8.4.1で2回タップしないとリンク先に遷移しない問題対策
+@media print, screen and (min-width: $lg-min) {
+    a:hover {
+        opacity: 0.6;
+    }
+}
+
+// デフォルトのボックスモデルをボーダーボックスに変更
+* {
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}

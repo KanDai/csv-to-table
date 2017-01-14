@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV -> TABLE</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <header id="header" class="header">
+    <h1 class="header_ttl">CSV -> TABLE変換</h1>
+    <ul class="header_list">
+      <li><a href="#">使い方</a></li>
+    </ul>
+  </header><!-- /header -->
+
+  <div class="container">
+
+    <div class="area area-data">
+      <div class="area_inner">
+
+          <textarea id="js-input" class="inputArea" name=""></textarea>
+
+      </div>
+    </div>
+
+    <div class="area area-setting">
+      <div class="area_inner">
+        <div>
+          <input type="checkbox" id="thRow" name=""> 1行目を&lt;th&gt;にする
+        </div>
+
+        <div>
+          <input type="checkbox" id="thLine" name=""> 1列目を&lt;th&gt;にする
+        </div>
+      </div>
+    </div>
+
+    <div class="area area-code">
+      <div class="area_inner">
+        <pre id="js-code"></pre>
+      </div>
+    </div>
+
+    <div class="area area-view">
+      <div class="area_inner">
+        <div id="js-output"></div>
+      </div>
+    </div>
+
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
