@@ -15,8 +15,25 @@
 @import "base/reset";
 @import "base/setting";
 
-// IconFonts
-// @import "base/iconfont";
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@import "lib/fa/variables";
+@import "lib/fa/mixins";
+@import "lib/fa/path";
+@import "lib/fa/core";
+@import "lib/fa/larger";
+@import "lib/fa/fixed-width";
+@import "lib/fa/list";
+@import "lib/fa/bordered-pulled";
+@import "lib/fa/animated";
+@import "lib/fa/rotated-flipped";
+@import "lib/fa/stacked";
+@import "lib/fa/icons";
+@import "lib/fa/screen-reader";
+
 
 
 /*========================================*/
