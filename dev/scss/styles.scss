@@ -105,6 +105,17 @@ html,body {
     }
   }
 
+  &_menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    &_item {
+      color: #aaa;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+
   // &_name {
   //   position: absolute;
   //   top: 0;

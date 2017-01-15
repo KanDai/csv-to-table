@@ -6,11 +6,11 @@ jQuery(function($){
   var $code   = $('#js-code')
   var $output = $('#js-output')
 
-
   var setting = {
     thRow : false,
     thLine : false
   }
+
 
 // Set Function
 // ----------------------------------
@@ -82,7 +82,16 @@ $input.on('keyup change', function(){
 // 読み込み時にテキストエリアにフォーカスを当てる
 $input.focus();
 
+// クリップボードにコピー
+var clipboard = new Clipboard('#js-code-clipboard');
 
+clipboard.on('success', function(e) {
+    e.clearSelection();
+
+    alert('クリップボードにコピーしました');
+    // @TODO
+    // コピー完了のフィードバックをアラートじゃなくする
+});
 
 
 });
