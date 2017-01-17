@@ -2,9 +2,10 @@ jQuery(function($){
 
 // Setteing Variavle
 // ----------------------------------
-  var $input  = $('#js-input')
-  var $code   = $('#js-code')
-  var $output = $('#js-output')
+  var $input       = $('#js-input');
+  var $code        = $('#js-code');
+  var $output      = $('#js-output');
+  var $settingItem = $('.js-settingItem');
 
   var setting = {
     thRow : false,
@@ -19,8 +20,18 @@ jQuery(function($){
    * 設定を変更
    * @param
    */
-  var changeSetting = function(){
+  var updateSetting = function(el){
 
+    var name = el.attr('name');
+    var type = el.attr('type');
+
+    switch ( type ){
+      case 'checkbox':
+        setting[name] = el.prop('checked');
+        break;
+    }
+
+    console.log(setting);
   };
 
 
@@ -52,9 +63,42 @@ jQuery(function($){
         rows[i] = cells;
 
       }
-
       return rows;
-  }
+  };
+
+
+  /*
+   * HTMLを整形
+   * @param
+   */
+  var buildHtml = function(rows){
+        var html = '';
+        html += '<table>' + '\r\n';
+
+        for (var i = 0; i < rows.length; i++ ){
+          html += '  <tr>' + '\r\n';
+
+          var row = rows[i];
+
+          var colType = '';
+
+          for (var j = 0; j < row.length; j++ ){
+
+              if ( setting.thRow && i === 0 ){
+                  colType = 'th';
+              } else {
+                  colType = ( setting.thLine && j === 0) ? 'th' : 'td';
+              }
+
+              html += '    <' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
+          }
+          html += '  </tr>' + '\r\n';
+        }
+
+        html += '</table>';
+
+        return html;
+   };
 
 
   /*
@@ -77,31 +121,9 @@ $input.on('keyup change', function(){
 
   var rows = getInputData();
 
-  var html = '';
-  html += '<table>' + '\r\n';
+  var html = buildHtml(rows);
 
-  for (var i = 0; i < rows.length; i++ ){
-    html += '  <tr>' + '\r\n';
-
-    var row = rows[i];
-
-    var colType = '';
-
-    for (var j = 0; j < row.length; j++ ){
-
-        if ( $('#thRow').prop('checked') && i === 0 ){
-            colType = 'th';
-        } else {
-            colType = ( $('#thLine').prop('checked') && j === 0) ? 'th' : 'td';
-        }
-
-        html += '    <' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
-    }
-    html += '  </tr>' + '\r\n';
-  }
-
-  html += '</table>';
-
+  outputCode(html);
 
 });
 
@@ -118,6 +140,19 @@ clipboard.on('success', function(e) {
     alert('クリップボードにコピーしました');
     // @TODO
     // コピー完了のフィードバックをアラートじゃなくする
+});
+
+// 設定アイテムが変更された時のイベント
+$settingItem.on('change', function(){
+
+  updateSetting($(this));
+
+  var rows = getInputData();
+
+  var html = buildHtml(rows);
+
+  outputCode(html);
+
 });
 
 
