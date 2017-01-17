@@ -9,7 +9,8 @@ jQuery(function($){
 
   var setting = {
     thRow : false,
-    thLine : false
+    thLine : false,
+    indent : "  "
   }
 
 
@@ -23,11 +24,14 @@ jQuery(function($){
   var updateSetting = function(el){
 
     var name = el.attr('name');
-    var type = el.attr('type');
+    var type = el.data('type');
 
     switch ( type ){
       case 'checkbox':
         setting[name] = el.prop('checked');
+        break;
+      case 'select':
+        setting[name] = el.val();
         break;
     }
 
@@ -76,7 +80,7 @@ jQuery(function($){
         html += '<table>' + '\r\n';
 
         for (var i = 0; i < rows.length; i++ ){
-          html += '  <tr>' + '\r\n';
+          html += setting.indent + '<tr>' + '\r\n';
 
           var row = rows[i];
 
@@ -90,9 +94,9 @@ jQuery(function($){
                   colType = ( setting.thLine && j === 0) ? 'th' : 'td';
               }
 
-              html += '    <' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
+              html += setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
           }
-          html += '  </tr>' + '\r\n';
+          html += setting.indent + '</tr>' + '\r\n';
         }
 
         html += '</table>';
@@ -156,9 +160,6 @@ $settingItem.on('change', function(){
 
 // Test Data
 $input.text(
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +

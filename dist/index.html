@@ -30,11 +30,23 @@
     <div class="area area-setting">
       <div class="area_inner">
         <div>
-          <input type="checkbox" id="thRow" class="js-settingItem" name="thRow"> 1行目を&lt;th&gt;にする
+          <label>
+            <input type="checkbox" id="thRow" class="js-settingItem" name="thRow" data-type="checkbox"> 1行目を&lt;th&gt;にする
+          </label>
         </div>
 
         <div>
-          <input type="checkbox" id="thLine" class="js-settingItem" name="thLine"> 1列目を&lt;th&gt;にする
+          <label>
+            <input type="checkbox" id="thLine" class="js-settingItem" name="thLine" data-type="checkbox"> 1列目を&lt;th&gt;にする
+          </label>
+        </div>
+
+        <div>
+          インデント
+          <select name="indent" class="js-settingItem" data-type="select">
+            <option value="  ">2</option>
+            <option value="    ">4</option>
+          </select>
         </div>
       </div>
     </div>
