@@ -14,23 +14,53 @@ jQuery(function($){
 
 // Set Function
 // ----------------------------------
-  var getSetting = function(){
+
+  /*
+   * 設定を変更
+   * @param
+   */
+  var changeSetting = function(){
 
   };
 
-  // データ取得
+
+  /*
+   * データ取得
+   * @param
+   */
   var getInputData = function(){
       var input = $input.val();
-
       var rows = input.split(/\r\n|\r|\n/);
 
       for (var i = 0; i < rows.length; i++ ){
-        rows[i] = rows[i].split(',');
+
+        // "で挟まれた文字列を取り出して一時的に保存
+        var temp = rows[i].match(/"[^"]+"/g);
+
+        // " で挟まれた文字列をデータ上存在しない文字で置き換えてカンマで分割
+        var replacedRow = rows[i].replace(/"[^"]+"/g, String.fromCharCode(0x1a));
+        var cells = replacedRow.split(",");
+
+        // 分割されたフィールドに置き換えられた文字列を戻す
+        for( var j = 0, k = 0; j < cells.length; j++ ) {
+          if ( cells[j] == String.fromCharCode(0x1a) ) {
+            cells[j] = temp[k].replace(/^"|"$/, '').replace(/"$/, '');
+            k++;
+          }
+        }
+
+        rows[i] = cells;
+
       }
 
       return rows;
   }
 
+
+  /*
+   * CodeViewとHTML結果に出力
+   * @param
+   */
   var outputCode = function(html){
     $code.text(html);
     $output.html(html);
@@ -60,7 +90,7 @@ $input.on('keyup change', function(){
     for (var j = 0; j < row.length; j++ ){
 
         if ( $('#thRow').prop('checked') && i === 0 ){
-            colType = 'th'; 
+            colType = 'th';
         } else {
             colType = ( $('#thLine').prop('checked') && j === 0) ? 'th' : 'td';
         }
@@ -72,10 +102,7 @@ $input.on('keyup change', function(){
 
   html += '</table>';
 
-  // console.log(html);
-  // console.log(rows);
 
-  outputCode(html);
 });
 
 
