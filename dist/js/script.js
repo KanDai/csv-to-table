@@ -11,7 +11,9 @@ jQuery(function($){
   var setting = {
     thRow : false,
     thLine : false,
-    indent : "  "
+    indent : "  ",
+    tableId : "",
+    tableClass : ""
   }
 
 
@@ -34,9 +36,12 @@ jQuery(function($){
       case 'select':
         setting[name] = el.val();
         break;
+      case 'text':
+        setting[name] = el.val();
+        break;
     }
 
-    console.log(setting);
+    // console.log(setting);
   };
 
 
@@ -77,34 +82,35 @@ jQuery(function($){
    * @param
    */
   var buildHtml = function(rows){
-        var html = '';
-        html += '<table>' + '\r\n';
+      var html = '';
 
-        for (var i = 0; i < rows.length; i++ ){
-          html += setting.indent + '<tr>' + '\r\n';
+      var tableId = ( setting.tableId !== '' ) ? ' id="' + setting.tableId + '"' : '';
+      var tableClass = ( setting.tableClass !== '' ) ? ' class="' + setting.tableClass + '"' : '';
 
-          var row = rows[i];
+      html += '<table' + tableId + tableClass + '>' + '\r\n';
 
-          var colType = '';
+      for (var i = 0; i < rows.length; i++ ){
+        html += setting.indent + '<tr>' + '\r\n';
 
-          for (var j = 0; j < row.length; j++ ){
+        var row = rows[i];
 
-              if ( setting.thRow && i === 0 ){
-                  colType = 'th';
-              } else {
-                  colType = ( setting.thLine && j === 0) ? 'th' : 'td';
-              }
+        for (var j = 0; j < row.length; j++ ){
 
-              html += setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
-          }
-          html += setting.indent + '</tr>' + '\r\n';
+            if ( setting.thRow && i === 0 ){
+                var colType = 'th';
+            } else {
+                var colType = ( setting.thLine && j === 0) ? 'th' : 'td';
+            }
+
+            html += setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
         }
+        html += setting.indent + '</tr>' + '\r\n';
+      }
 
-        html += '</table>';
+      html += '</table>';
 
-        return html;
+      return html;
    };
-
 
   /*
    * CodeViewとHTML結果に出力
@@ -149,8 +155,9 @@ clipboard.on('success', function(e) {
     }, 1500);
 });
 
+
 // 設定アイテムが変更された時のイベント
-$settingItem.on('change', function(){
+$settingItem.on('keyup change', function(){
 
   updateSetting($(this));
 
