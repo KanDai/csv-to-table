@@ -208,3 +208,20 @@ html,body {
 }
 
 
+.message {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  background: #fcf8e3;
+  border-bottom: 1px solid #faebcc;
+  color: #d44950;
+  position: fixed;
+  top: 0;
+  transform:translateY(-50px);
+  transition: transform .3s ease-in-out;
+  &.is-show {
+    transform:translateY(0);
+  }
+}
+

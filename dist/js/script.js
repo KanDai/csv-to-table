@@ -6,6 +6,7 @@ jQuery(function($){
   var $code        = $('#js-code');
   var $output      = $('#js-output');
   var $settingItem = $('.js-settingItem');
+  var $message     = $('#js-message');
 
   var setting = {
     thRow : false,
@@ -141,9 +142,11 @@ var clipboard = new Clipboard('#js-code-clipboard');
 clipboard.on('success', function(e) {
     e.clearSelection();
 
-    alert('クリップボードにコピーしました');
-    // @TODO
-    // コピー完了のフィードバックをアラートじゃなくする
+    $message.addClass('is-show');
+
+    setTimeout(function(){
+      $message.removeClass('is-show');
+    }, 1500);
 });
 
 // 設定アイテムが変更された時のイベント
