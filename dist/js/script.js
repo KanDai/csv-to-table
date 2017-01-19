@@ -88,9 +88,10 @@ jQuery(function($){
       var tableClass = ( setting.tableClass !== '' ) ? ' class="' + setting.tableClass + '"' : '';
 
       html += '<table' + tableId + tableClass + '>' + '\r\n';
+      html += ( setting.thRow ) ? setting.indent + '<thead>' + '\r\n' : setting.indent + '<tbody>' + '\r\n';
 
       for (var i = 0; i < rows.length; i++ ){
-        html += setting.indent + '<tr>' + '\r\n';
+        html += setting.indent + setting.indent + '<tr>' + '\r\n';
 
         var row = rows[i];
 
@@ -102,11 +103,18 @@ jQuery(function($){
                 var colType = ( setting.thLine && j === 0) ? 'th' : 'td';
             }
 
-            html += setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
+            html += setting.indent + setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
         }
-        html += setting.indent + '</tr>' + '\r\n';
+
+        html += setting.indent + setting.indent + '</tr>' + '\r\n';
+
+        if ( setting.thRow && i === 0 ) {
+          html += setting.indent + '</thead>' + '\r\n';
+          html += setting.indent + '<tbody>' + '\r\n';
+        }
       }
 
+      html += setting.indent + '</tbody>' + '\r\n';;
       html += '</table>';
 
       return html;
