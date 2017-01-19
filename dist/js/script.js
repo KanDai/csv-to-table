@@ -13,7 +13,9 @@ jQuery(function($){
     thLine : false,
     indent : "  ",
     tableId : "",
-    tableClass : ""
+    tableClass : "",
+    theadClass : "",
+    tbodyClass : ""
   }
 
 
@@ -86,9 +88,11 @@ jQuery(function($){
 
       var tableId = ( setting.tableId !== '' ) ? ' id="' + setting.tableId + '"' : '';
       var tableClass = ( setting.tableClass !== '' ) ? ' class="' + setting.tableClass + '"' : '';
+      var theadClass = ( setting.theadClass !== '' ) ? ' class="' + setting.theadClass + '"' : '';
+      var tbodyClass = ( setting.tbodyClass !== '' ) ? ' class="' + setting.tbodyClass + '"' : '';
 
       html += '<table' + tableId + tableClass + '>' + '\r\n';
-      html += ( setting.thRow ) ? setting.indent + '<thead>' + '\r\n' : setting.indent + '<tbody>' + '\r\n';
+      html += ( setting.thRow ) ? setting.indent + '<thead' + theadClass + '>' + '\r\n' : setting.indent + '<tbody' + tbodyClass + '>' + '\r\n';
 
       for (var i = 0; i < rows.length; i++ ){
         html += setting.indent + setting.indent + '<tr>' + '\r\n';
@@ -110,7 +114,7 @@ jQuery(function($){
 
         if ( setting.thRow && i === 0 ) {
           html += setting.indent + '</thead>' + '\r\n';
-          html += setting.indent + '<tbody>' + '\r\n';
+          html += setting.indent + '<tbody' + tbodyClass + '>' + '\r\n';
         }
       }
 
