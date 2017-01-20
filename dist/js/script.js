@@ -2,11 +2,14 @@ jQuery(function($){
 
 // Setteing Variavle
 // ----------------------------------
-  var $input       = $('#js-input');
-  var $code        = $('#js-code');
-  var $output      = $('#js-output');
-  var $settingItem = $('.js-settingItem');
-  var $message     = $('#js-message');
+  var $input             = $('#js-input');
+  var $code              = $('#js-code');
+  var $output            = $('#js-output');
+  var $settingItem       = $('.js-settingItem');
+  var $message           = $('#js-message');
+  var $trClass           = $('input[name="trClass"]');
+  var $firstRowClass     = $('input[name="firstRowClass"]');
+  var $secondaryRowClass = $('input[name="secondaryRowClass"]');
 
   var setting = {
     thRow : false,
@@ -15,7 +18,13 @@ jQuery(function($){
     tableId : "",
     tableClass : "",
     theadClass : "",
-    tbodyClass : ""
+    tbodyClass : "",
+    trClass : [],
+    trUseCommon : true,
+    firstRowClass : [],
+    firstRowUseCommon : true,
+    secondaryRowClass : [],
+    secondaryRowUseCommon : true
   }
 
 
@@ -90,24 +99,78 @@ jQuery(function($){
       var tableClass = ( setting.tableClass !== '' ) ? ' class="' + setting.tableClass + '"' : '';
       var theadClass = ( setting.theadClass !== '' ) ? ' class="' + setting.theadClass + '"' : '';
       var tbodyClass = ( setting.tbodyClass !== '' ) ? ' class="' + setting.tbodyClass + '"' : '';
+      setting.trClass = $trClass.val().split(',');
+      setting.firstRowClass = $firstRowClass.val().split(',');
+      setting.secondaryRowClass = $secondaryRowClass.val().split(',');
+
+      // console.log(setting.trClass);
+      // console.log(setting.firstRowClass);
+      // console.log(setting.secondaryRowClass);
+
 
       html += '<table' + tableId + tableClass + '>' + '\r\n';
       html += ( setting.thRow ) ? setting.indent + '<thead' + theadClass + '>' + '\r\n' : setting.indent + '<tbody' + tbodyClass + '>' + '\r\n';
 
-      for (var i = 0; i < rows.length; i++ ){
-        html += setting.indent + setting.indent + '<tr>' + '\r\n';
+      for ( var i = 0; i < rows.length; i++ ){
 
+        // <tr>のHTML
+        if ( setting.trClass[0] !== '' ) {
+          if ( setting.trUseCommon ) {
+            var trClass = ' class="' + setting.trClass[0] + '"';
+          } else if ( setting.trClass[i] ) {
+            var trClass = ' class="' + setting.trClass[i] + '"';
+          } else {
+            var trClass = '';
+          }
+        } else {
+          var trClass = '';
+        }
+        html += setting.indent + setting.indent + '<tr' + trClass + '>' + '\r\n';
+
+        // 1行分のデータを変数に格納
+        // 1行分のデータをループしてHTML組み立て
         var row = rows[i];
 
         for (var j = 0; j < row.length; j++ ){
 
-            if ( setting.thRow && i === 0 ){
-                var colType = 'th';
+            // 1行目のクラス
+            if ( setting.firstRowClass[0] !== '' ) {
+              if ( setting.firstRowUseCommon ) {
+                var firstRowClass = ' class="' + setting.firstRowClass[0] + '"';
+              } else if ( setting.firstRowClass[j] ) {
+                var firstRowClass = ' class="' + setting.firstRowClass[j] + '"';
+              } else {
+                var firstRowClass = '';
+              }
             } else {
-                var colType = ( setting.thLine && j === 0) ? 'th' : 'td';
+              var firstRowClass = '';
             }
 
-            html += setting.indent + setting.indent + setting.indent + '<' + colType + '>' + row[j] + '</' + colType + '>' + '\r\n';
+            // 2行目以降のクラス
+            if ( setting.secondaryRowClass[0] !== '' ) {
+              if ( setting.secondaryRowUseCommon ) {
+                var secondaryRowClass = ' class="' + setting.secondaryRowClass[0] + '"';
+              } else if ( setting.secondaryRowClass[j] ) {
+                var secondaryRowClass = ' class="' + setting.secondaryRowClass[j] + '"';
+              } else {
+                var secondaryRowClass = '';
+              }
+            } else {
+              var secondaryRowClass = '';
+            }
+
+            if ( setting.thRow && i === 0 ) {
+                var colStart = '<th' + firstRowClass + '>';
+                var colEnd   = '</th>';
+            } else if ( i === 0 ) {
+                var colStart = ( setting.thLine && j === 0 ) ? '<th' + firstRowClass + '>' : '<td' + firstRowClass + '>';
+                var colEnd   = ( setting.thLine && j === 0 ) ? '</th>' : '</td>';
+            } else {
+                var colStart = ( setting.thLine && j === 0 ) ? '<th' + secondaryRowClass + '>' : '<td' + secondaryRowClass + '>';
+                var colEnd   = ( setting.thLine && j === 0 ) ? '</th>' : '</td>';
+            }
+
+            html += setting.indent + setting.indent + setting.indent + colStart + row[j] + colEnd + '\r\n';
         }
 
         html += setting.indent + setting.indent + '</tr>' + '\r\n';
