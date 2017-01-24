@@ -35,59 +35,67 @@
 
     <div class="area area-setting">
       <div class="area_inner">
-        <div>
-          <label>
-            <input type="checkbox" class="js-settingItem" name="thRow" data-type="checkbox"> 1行目を&lt;th&gt;にする
-          </label>
-        </div>
+        <div class="setting-cols">
 
-        <div>
-          <label>
-            <input type="checkbox" class="js-settingItem" name="thLine" data-type="checkbox"> 1列目を&lt;th&gt;にする
-          </label>
-        </div>
+          <div class="setting-col is-2col">
+            <label>
+              <input type="checkbox" class="js-settingItem" name="thRow" data-type="checkbox"> 1行目を&lt;th&gt;にする
+            </label>
+          </div>
 
-        <div>
-          インデント
-          <select name="indent" class="js-settingItem" data-type="select">
-            <option value="  ">2</option>
-            <option value="    ">4</option>
-          </select>
-        </div>
+          <div class="setting-col is-2col">
+            <label>
+              <input type="checkbox" class="js-settingItem" name="thLine" data-type="checkbox"> 1列目を&lt;th&gt;にする
+            </label>
+          </div>
 
-        <div>
-          &lt;table&gt;のID
-          <input type="text" name="tableId" class="js-settingItem" data-type="text" value="">
-        </div>
-        <div>
-          &lt;table&gt;のclass
-          <input type="text" name="tableClass" class="js-settingItem" data-type="text" value="">
-        </div>
-        <div>
-          &lt;thead&gt;のclass
-          <input type="text" name="theadClass" class="js-settingItem" data-type="text" value="">
-        </div>
-        <div>
-          &lt;tbody&gt;のclass
-          <input type="text" name="tbodyClass" class="js-settingItem" data-type="text" value="">
-        </div>
+          <div class="setting-col is-2col">
+            <span class="setting-label">&lt;table&gt;のID</span>
+            <input type="text" name="tableId" class="js-settingItem setting-textBox-s" data-type="text" value="">
+          </div>
 
-        <div>
-          &lt;tr&gt;のclass
-          <input type="text" name="trClass" class="js-settingItem" data-type="text" value="">
-          <input type="checkbox" class="js-settingItem" name="trUseCommon" data-type="checkbox" checked="checked"> 共通で使う
-        </div>
-        <div>
-          1行目のclass
-          <input type="text" name="firstRowClass" class="js-settingItem" data-type="text" value="">
-          <input type="checkbox" class="js-settingItem" name="firstRowUseCommon" data-type="checkbox" checked="checked"> 共通で使う
-        </div>
-        <div>
-          2行目以降のclass
-          <input type="text" name="secondaryRowClass" class="js-settingItem" data-type="text" value="">
-          <input type="checkbox" class="js-settingItem" name="secondaryRowUseCommon" data-type="checkbox" checked="checked"> 共通で使う
-        </div>
+          <div class="setting-col is-2col">
+            <span class="setting-label">&lt;table&gt;のclass</span>
+            <input type="text" name="tableClass" class="js-settingItem setting-textBox-s" data-type="text" value="">
+          </div>
 
+          <div class="setting-col is-1col">
+            <span class="setting-label">&lt;thead&gt;のclass</span>
+            <input type="text" name="theadClass" class="js-settingItem setting-textBox-m" data-type="text" value="">
+          </div>
+
+          <div class="setting-col is-1col">
+            <span class="setting-label">&lt;tbody&gt;のclass</span>
+            <input type="text" name="tbodyClass" class="js-settingItem setting-textBox-m" data-type="text" value="">
+          </div>
+
+          <div class="setting-col is-1col">
+            <span class="setting-label">&lt;tr&gt;のclass</span>
+            <input type="text" name="trClass" class="js-settingItem setting-textBox-m" data-type="text" value="">
+            <input type="checkbox" class="js-settingItem setting-textBox-option" name="trUseCommon" data-type="checkbox" checked="checked"> 共通で使う
+          </div>
+
+          <div class="setting-col is-1col">
+            <span class="setting-label">1行目のclass</span>
+            <input type="text" name="firstRowClass" class="js-settingItem setting-textBox-m" data-type="text" value="">
+            <input type="checkbox" class="js-settingItem setting-textBox-option" name="firstRowUseCommon" data-type="checkbox" checked="checked"> 共通で使う
+          </div>
+
+          <div class="setting-col is-1col">
+            <span class="setting-label">2行目以降のclass</span>
+            <input type="text" name="secondaryRowClass" class="js-settingItem setting-textBox-m" data-type="text" value="">
+            <input type="checkbox" class="js-settingItem setting-textBox-option" name="secondaryRowUseCommon" data-type="checkbox" checked="checked"> 共通で使う
+          </div>
+
+          <div class="setting-col is-1col">
+            <span class="setting-label">インデント</span>
+            <select name="indent" class="js-settingItem" data-type="select">
+              <option value="  ">2</option>
+              <option value="    ">4</option>
+            </select>
+          </div>
+
+        </div><!-- .setting-cols -->
       </div>
     </div>
 

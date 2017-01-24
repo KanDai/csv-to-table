@@ -45,6 +45,10 @@ html,body {
   height: 100%;
 }
 
+body {
+  min-width: 1200px;
+  min-height: 680px;
+}
 
 .header {
   width: 100%;
@@ -104,12 +108,12 @@ html,body {
   height: 50%;
   padding: 6px;
   overflow: hidden;
+  position: relative;
 
   &_inner {
     width: 100%;
     height: 100%;
     background-color: #393939;
-    position: relative;
     border-radius: 4px;
     padding: 20px;
     overflow: auto;
@@ -121,8 +125,8 @@ html,body {
 
   &_menu {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 15px;
+    right: 25px;
     &_item {
       color: #aaa;
       padding: 10px;
@@ -130,38 +134,6 @@ html,body {
     }
   }
 
-  // &_name {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   padding: 6px 20px;
-  //   font-size: 12px;
-  //   color: #aaa;
-  //   border-left: 1px solid #777;
-  //   border-bottom: 1px solid #777;
-  //   border-radius: 0 0 0 5px;
-  // }
-
-  // &_head {
-  //   padding: 12px;
-  //   background-color: #444;
-  //   position: relative;
-  //   width: 100%;
-  //   // height: 36px;
-  // }
-
-  // &_ttl {
-  //   color: #ccc;
-  //   font-weight: normal;
-  //   font-size: 1.6rem;
-  // }
-
-  // &_body {
-  //   width: 100%;
-  //   height: 100%;
-  //   padding: 20px;
-  //   overflow: auto;
-  // }
 }
 
 .area-data {
@@ -225,3 +197,51 @@ html,body {
   }
 }
 
+.setting-cols {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -6px 0;
+}
+
+.setting-col {
+  padding: 5px 0;
+  &.is-1col {
+    width: 100%;
+  }
+  &.is-2col {
+    width: 50%;
+  }
+
+}
+
+.setting {
+  &-label {
+    display: inline-block;
+    width: 120px;
+  }
+
+  &-textBox-s {
+    width: 120px;
+  }
+
+  &-textBox-m {
+    width: 240px;
+  }
+
+  &-textBox-option {
+    margin-left: 10px;
+  }
+}
+
+.area-setting {
+  input[type="text"] {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    padding: 3px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
