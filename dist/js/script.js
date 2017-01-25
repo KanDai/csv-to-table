@@ -243,18 +243,56 @@ $settingItem.on('keyup change', function(){
 });
 
 
-// Test Data
-$input.text(
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-    'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-    'あああああ,いいいいい,"10,000","20,000"'
-).trigger('change');
+/*
+ * Test Data
+ */
+// $input.text(
+//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
+//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
+//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
+//     'あああああ,いいいいい,"10,000","20,000"'
+// ).trigger('change');
+
+// Modal
+// ----------------------------------
+
+var $modalArea = $('.js-modalArea');
+var $modalTrg  = $('.js-modal-trg');
+var $modal     = $('.js-modal');
+
+var showModal = function(target){
+    $modalArea.addClass('is-show');
+    setTimeout(function(){
+      $( target ).addClass('is-show');
+    }, 10);
+
+};
+
+var closeModal = function(){
+  $modal.removeClass('is-show');
+  setTimeout(function(){
+    $modalArea.removeClass('is-show');
+  }, 500);
+};
+
+$modalTrg.on('click', function(ev){
+  var target = $(this).attr('href');
+
+  showModal(target);
+
+});
+
+$modalArea.on('click', function(ev){
+  closeModal();
+});
+
+$modal.on('click', function(ev){
+  ev.stopPropagation();
+});
+
 
 });
 
 
 // @TODO 使い方のモーダル表示
-// @TODO Settingの見た目調整
-// @TODO 最小幅と最小高さを設定する
 // @TODO クリップボードアイコンにツールチップをつける
