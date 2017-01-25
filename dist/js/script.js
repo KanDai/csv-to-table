@@ -256,20 +256,24 @@ $settingItem.on('keyup change', function(){
 // Modal
 // ----------------------------------
 
-var $modalArea = $('.js-modalArea');
-var $modalTrg  = $('.js-modal-trg');
-var $modal     = $('.js-modal');
+var $modalArea  = $('.js-modalArea');
+var $modalTrg   = $('.js-modal-trg');
+var $modal      = $('.js-modal');
+var $modalClose = $('.js-modal-close');
+
 
 var showModal = function(target){
     $modalArea.addClass('is-show');
     setTimeout(function(){
       $( target ).addClass('is-show');
+      $modalClose.addClass('is-show');
     }, 10);
 
 };
 
 var closeModal = function(){
   $modal.removeClass('is-show');
+  $modalClose.removeClass('is-show');
   setTimeout(function(){
     $modalArea.removeClass('is-show');
   }, 500);
@@ -283,6 +287,10 @@ $modalTrg.on('click', function(ev){
 });
 
 $modalArea.on('click', function(ev){
+  closeModal();
+});
+
+$modalClose.on('click', function(ev){
   closeModal();
 });
 

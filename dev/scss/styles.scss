@@ -266,6 +266,41 @@ body {
     align-items: center;
     justify-content: center;
   }
+
+  &_close {
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity .5s ease-in;
+    &:before,
+    &:after {
+      position: absolute;
+      right: 20px;
+      top: 36px;
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    span {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+    &.is-show {
+      opacity: 1;
+    }
+  }
 }
 
 .modal {
