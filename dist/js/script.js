@@ -12,7 +12,7 @@ jQuery(function($){
   var $secondaryRowClass = $('input[name="secondaryRowClass"]');
 
   var setting = {
-    thRow : false,
+    thRow : true,
     thLine : false,
     indent : "  ",
     tableId : "",
@@ -244,14 +244,13 @@ $settingItem.on('keyup change', function(){
 
 
 /*
- * Test Data
+ * 最初にサンプルデータが入力された状態にする
  */
-// $input.text(
-//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-//     'あああああ,いいいいい,"10,000","20,000"' + '\r\n' +
-//     'あああああ,いいいいい,"10,000","20,000"'
-// ).trigger('change');
+$input.text(
+    ',1個,10個,50個' + '\r\n' +
+    'りんご,100円,"1,000円","5,000円"' + '\r\n' +
+    'みかん,50円,500円,"2,500円"'
+).trigger('change');
 
 // Modal
 // ----------------------------------

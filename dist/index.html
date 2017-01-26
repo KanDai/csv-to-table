@@ -39,7 +39,7 @@
 
           <div class="setting-col is-2col">
             <label>
-              <input type="checkbox" class="js-settingItem" name="thRow" data-type="checkbox"> 1行目を&lt;th&gt;にする
+              <input type="checkbox" class="js-settingItem" name="thRow" data-type="checkbox" checked="checked"> 1行目を&lt;th&gt;にする
             </label>
           </div>
 
@@ -128,7 +128,13 @@
   <div class="modalArea js-modalArea">
     <div class="modalArea_inner">
       <div id="about" class="modal js-modal">
-        modal
+        <h2 class="modal_ttl">使い方</h2>
+        <p>CSV形式で入力したデータをHTMLの&lt;table&gt;に変換してくれるツールです。</p>
+        <p>左上の入力エリアにCSV形式でデータを入力するとリアルタイムで変換します。<br>
+        左下のブロックに、HTMLのコードが生成されます。右上のアイコンをクリックすると、クリップボードにコピーできます。<br>
+        右下のブロックには、ブラウザでの見た目が表示されます。</p>
+        <p>数字などで文字列の中にカンマが含まれる場合はダブルクォーテーション(&quot;)で囲ってください。</p>
+        <h2 class="modal_ttl">オプション</h2>
       </div>
     </div>
 
