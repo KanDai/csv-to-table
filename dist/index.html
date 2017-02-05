@@ -128,17 +128,58 @@
   <div class="modalArea js-modalArea">
     <div class="modalArea_inner">
       <div id="about" class="modal js-modal">
-        <h2 class="modal_ttl">使い方</h2>
-        <p>CSV形式で入力したデータをHTMLの&lt;table&gt;に変換してくれるツールです。</p>
-        <p>左上の入力エリアにCSV形式でデータを入力するとリアルタイムで変換します。<br>
-        左下のブロックに、HTMLのコードが生成されます。右上のアイコンをクリックすると、クリップボードにコピーできます。<br>
-        右下のブロックには、ブラウザでの見た目が表示されます。</p>
-        <p>数字などで文字列の中にカンマが含まれる場合はダブルクォーテーション(&quot;)で囲ってください。</p>
-        <h2 class="modal_ttl">オプション</h2>
+        <div class="modal_cnt">
+          <div class="modal_sec">
+            <h2 class="modal_ttl">使い方</h2>
+            <p>CSV形式で入力したデータをHTMLの&lt;table&gt;に変換するツールです。<br>
+            左上の入力エリアにCSV形式でデータを入力するとリアルタイムで変換します。</p>
+            <p>左下のブロックにはHTMLのコードが生成され、右上のアイコンをクリックするとクリップボードにコピーできます。右下のブロックには、ブラウザでの見た目が表示されます。</p>
+            <p>数字などで文字列の中にカンマが含まれる場合はダブルクォーテーション(&quot;)で囲ってください。</p>
+          </div>
+
+          <div class="modal_sec">
+            <h2 class="modal_ttl">オプション</h2>
+            <h3 class="modal_subttl">1行目を&lt;th&gt;にする</h3>
+            <p>チェックすると1行目のマークアップが&lt;th&gt;になります。<br>
+            自動的に1行目が&lt;thead&gt;で囲まれます。</p>
+
+            <h3 class="modal_subttl">1列目を&lt;th&gt;にする</h3>
+            <p>チェックすると1列目のマークアップが&lt;th&gt;になります。</p>
+
+            <h3 class="modal_subttl">&lt;table&gt;のID</h3>
+            <p>&lt;table&gt;タグにid属性を付与できます。idの設定ができるのは&lt;table&gt;タグのみです。</p>
+
+            <h3 class="modal_subttl">&lt;table&gt;のclass</h3>
+            <p>&lt;table&gt;タグにclass属性を付与できます。</p>
+
+            <h3 class="modal_subttl">&lt;thead&gt;のclass</h3>
+            <p>&lt;thead&gt;タグにclass属性を付与できます。</p>
+
+            <h3 class="modal_subttl">&lt;tbody&gt;のclass</h3>
+            <p>&lt;tbody&gt;タグにclass属性を付与できます。</p>
+
+            <h3 class="modal_subttl">&lt;tr&gt;のclass</h3>
+            <p>&lt;tr&gt;タグにclass属性を付与できます。<br>「共通で使う」のチェックがされていると全ての&lt;tr&gt;タグに設定されます。<br>
+            「共通で使う」のチェックが外れた状態で、カンマ区切りで記述をすると、1つめの&lt;tr&gt;タグ、2つめの&lt;tr&gt;タグと個別に設定できます。</p>
+
+            <h3 class="modal_subttl">1行目のclass</h3>
+            <p>1行目の&lt;th&gt;&lt;td&gt;タグにclass属性を付与できます。<br>
+            「共通で使う」のチェックがされていると1行目全ての&lt;th&gt;&lt;td&gt;タグに設定されます。<br>
+            「共通で使う」のチェックが外れた状態で、カンマ区切りで記述をすると、1つめの&lt;th&gt;&lt;td&gt;タグ、2つめの&lt;th&gt;&lt;td&gt;タグと個別に設定できます。</p>
+
+            <h3 class="modal_subttl">2行目以降のclass</h3>
+            <p>2行目以降の&lt;th&gt;&lt;td&gt;タグにclass属性を付与できます。<br>
+            上記の「1行目のclass」と同様の仕様ですが、2行目以降全てに反映されます。</p>
+
+            <h3 class="modal_subttl">インデント</h3>
+            <p>HTMLのインデントの設定が出来ます。「2」か「4」で設定できます。</p>
+          </div>
+        </div>
+
+        <div class="modal_close js-modal-close"></div>
+
       </div>
     </div>
-
-    <div class="modalArea_close js-modal-close"><span></span></div>
   </div>
 
 

@@ -103,10 +103,6 @@ jQuery(function($){
       setting.firstRowClass = $firstRowClass.val().split(',');
       setting.secondaryRowClass = $secondaryRowClass.val().split(',');
 
-      // console.log(setting.trClass);
-      // console.log(setting.firstRowClass);
-      // console.log(setting.secondaryRowClass);
-
 
       html += '<table' + tableId + tableClass + '>' + '\r\n';
       html += ( setting.thRow ) ? setting.indent + '<thead' + theadClass + '>' + '\r\n' : setting.indent + '<tbody' + tbodyClass + '>' + '\r\n';
@@ -265,14 +261,12 @@ var showModal = function(target){
     $modalArea.addClass('is-show');
     setTimeout(function(){
       $( target ).addClass('is-show');
-      $modalClose.addClass('is-show');
     }, 10);
 
 };
 
 var closeModal = function(){
   $modal.removeClass('is-show');
-  $modalClose.removeClass('is-show');
   setTimeout(function(){
     $modalArea.removeClass('is-show');
   }, 500);
